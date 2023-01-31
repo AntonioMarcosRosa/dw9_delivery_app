@@ -7,7 +7,7 @@ class Dw9DeliveryApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(title: 'Delivery App', routes: {
-      '/': (context) => const SplashPage(),
+      '/': (context) => SplashPage(),
     });
   }
 }

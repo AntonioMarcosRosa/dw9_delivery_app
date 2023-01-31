@@ -1,9 +1,10 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class TextStyles {
   static TextStyles? _instance;
 
   TextStyles._();
+
   static TextStyles get instance {
     _instance ??= TextStyles._();
     return _instance!;
@@ -24,6 +25,9 @@ class TextStyles {
   TextStyle get textExtraBold =>
       TextStyle(fontFamily: font, fontWeight: FontWeight.w800);
 
-  TextStyle get textButtonLabel =>
-      TextStyle(fontFamily: font, fontWeight: FontWeight.w800, fontSize: 14);
+  TextStyle get textButtonLabel => textBold.copyWith(fontSize: 14);
+}
+
+extension TextStylesExtensions on BuildContext {
+  TextStyles get textStyles => TextStyles.instance;
 }

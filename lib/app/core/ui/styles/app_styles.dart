@@ -19,3 +19,7 @@ class AppStyles {
         textStyle: TextStyles.instance.textButtonLabel,
       );
 }
+
+extension AppStylesExtension on BuildContext {
+  AppStyles get appStyles => AppStyles.instance;
+}
