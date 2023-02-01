@@ -20,11 +20,11 @@ class DeliveryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: context.screenWidth,
+      width: width,
       height: height,
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(Env.instance['backend_base_url'] ?? ''),
+        child: Text(label),
       ),
     );
   }
