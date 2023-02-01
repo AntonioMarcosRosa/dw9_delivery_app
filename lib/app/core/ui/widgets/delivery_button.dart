@@ -1,7 +1,4 @@
-import 'package:dw9_delivery_app/app/core/ui/helpers/size_extensions.dart';
 import 'package:flutter/material.dart';
-
-import '../../config/env/env.dart';
 
 class DeliveryButton extends StatelessWidget {
   final String label;
