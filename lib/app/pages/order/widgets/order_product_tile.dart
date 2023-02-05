@@ -1,8 +1,11 @@
+import 'package:dw9_delivery_app/app/core/extensions/formatter_extension.dart';
 import 'package:dw9_delivery_app/app/core/ui/styles/colors_app.dart';
 import 'package:dw9_delivery_app/app/core/ui/styles/text_styles.dart';
 import 'package:dw9_delivery_app/app/core/ui/widgets/delivery_increment_decrement_button.dart';
 import 'package:dw9_delivery_app/app/dto/order_product_dto.dart';
+import 'package:dw9_delivery_app/app/pages/order/order_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OrderProductTile extends StatelessWidget {
   final int index;
@@ -21,7 +24,7 @@ class OrderProductTile extends StatelessWidget {
       child: Row(
         children: [
           Image.network(
-            "http://www.saboresajinomoto.com.br/uploads/images/recipes/sanduiche-de-churrasco.jpg",
+            orderProduct.product.image,
             width: 100,
             height: 100,
             fit: BoxFit.cover,
@@ -33,7 +36,7 @@ class OrderProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'X-Churrasco',
+                    orderProduct.product.name,
                     style: context.textStyles.textRegular.copyWith(
                       fontSize: 16,
                     ),
@@ -42,16 +45,16 @@ class OrderProductTile extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        r'R$ 20,00',
+                        orderProduct.totalPrice.currencyPTBR,
                         style: context.textStyles.textMedium.copyWith(
                           fontSize: 14,
                           color: context.colors.secondary,
                         ),
                       ),
                       DeliveryIncrementDecrementButton.compact(
-                        amout: 0,
-                        incrementTap: () {},
-                        decrementTap: () {},
+                        amout: orderProduct.amount,
+                        incrementTap: () => context.read<OrderController>().incrementProduct(index),
+                        decrementTap: () => context.read<OrderController>().decrementProduct(index),
                       )
                     ],
                   ),
